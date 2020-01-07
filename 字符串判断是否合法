@@ -1,0 +1,63 @@
+package Stack;
+import java.util.Scanner;
+//判断字符串是否合法
+public class Exp  {
+
+	static int  Judgeleft(char a)
+	{
+		switch(a)
+		{
+		case '(':
+		  return 1;
+		case '{':
+		return 2;
+		case '[':
+		return 3;
+		default:
+			return 0;
+		}
+	
+	}
+	static int  Judgeright(char a)
+	{
+		switch(a)
+		{
+		case ')':
+		  return 1;
+		case '}':
+		return 2;
+		case ']':
+		return 3;
+		default:
+			return 0;
+		}
+	
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Mystack2 Mylink=new Mystack2(20);
+		Scanner Reader=new Scanner(System.in);
+		String temp=Reader.next();
+		
+		for(int i=0;i<temp.length();i++)
+		{
+			char ch=temp.charAt(i);
+			if(Judgeleft(ch)!=0)
+			Mylink.push(ch);
+			else
+			{
+				if(Judgeleft((char)Mylink.Gettop())==Judgeright(ch))
+				{
+					Mylink.pop();
+					break;
+				}
+				System.out.print("字符串不合法");
+				return;
+			}
+				
+		}
+			System.out.print("字符串合法");
+        
+	}
+
+}
