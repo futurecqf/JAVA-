@@ -1,0 +1,74 @@
+
+public static void Quicksort1(int data[],int left,int right)
+	{
+		int prevleft=left;
+		int prevright=right;
+		if(left>=right)
+			return;
+		int tmp=data[left];
+		while(left<right)
+		{
+			for(int i=right;i>=left;i--)
+		    {
+				if (data[i]<tmp)
+				{
+					data[left]=data[i];
+				    right=i;
+					break;
+				}
+				right=i;
+			}
+			
+			for(int j=left;j<=right;j++)
+			{
+				if(data[j]>tmp)
+				{
+					data[right]=data[j];
+				    left=j;
+				    break;
+				}
+				left=j;
+			}
+		}
+		System.out.println(right);
+		System.out.println(left);
+		data[right]=tmp;			
+			Quicksort1(data,prevleft,right-1);
+			Quicksort1(data,right+1,prevright);    
+			return;
+	}
+  
+  
+  
+  
+	public static void Quicksort2(int data[],int left,int right)
+	{
+		int prevleft=left;
+		int prevright=right;
+		if(left>=right)
+			return;
+		int tmp=data[left];
+		while(left<right)
+		{
+			for(int i=right;i>=left;i--)
+			{
+				if(data[i]<tmp)
+				{
+					data[left]=data[i];
+					right=i;
+					break;
+				}
+				right=i;
+			}
+			left++;
+			for(int j=right;j>left;j--)
+			{
+				data[j]=data[j-1];
+			}
+		}
+		System.out.println(right);
+		System.out.println(left);
+		data[right]=tmp;
+		Quicksort2(data,prevleft,right-1);
+		Quicksort2(data,right+1,prevright); 
+	}
