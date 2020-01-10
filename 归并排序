@@ -1,0 +1,43 @@
+public static void mergesortone(int []data,int left,int mid,int right)
+	{   
+		int []tmp=Arrays.copyOfRange(data, left,right+1);
+		int i=0;
+		int j=mid-left+1;
+		int leftlength=mid-left;
+		int length=right-left;
+		for(int k=left;k<=right;k++)
+		{
+			if(i>leftlength&&j>length)
+				return;
+			if(i>leftlength&&j<=length)
+				{
+				  data[k]=tmp[j];
+				  j++;					
+				}
+			else if(j>length&&i<=leftlength)
+			{
+				data[k]=tmp[i];
+				i++;
+			}
+			else if(tmp[i]<tmp[j])
+			{
+				data[k]=tmp[i];
+				i++;
+			}
+			else
+			{
+				data[k]=tmp[j];
+				j++;
+			}
+				
+		}
+		
+	}
+	public static void Mergesort(int []data,int left,int right)
+	{
+		int []tmp=new int [data.length];
+		int mid=(left+right)/2;
+		if (left<mid)Mergesort(data,left,mid);
+		if(right>mid+1)Mergesort(data,mid+1,right);
+		mergesortone(data,left,mid,right);
+	}
