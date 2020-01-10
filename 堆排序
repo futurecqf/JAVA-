@@ -1,0 +1,29 @@
+public static void Heapsort(int []data,int n)
+    {
+    	if(n>1)
+    	{
+    		for(int i=n/2;i>=1;i--)
+    		{
+    			if(2*i+1<=n&&data[i-1]<data[2*i])
+    			{
+    				int tmp=data[2*i];
+    				data[2*i]=data[i-1];
+    				data[i-1]=tmp;
+    			}
+    			if(2*i<=n&&data[2*i-1]>data[i-1])
+    			{
+    				int tmp=data[2*i-1];
+    				data[2*i-1]=data[i-1];
+    				data[i-1]=tmp;
+    			}
+    			
+    		}
+    		int change=data[0];
+    		data[0]=data[n-1];
+    		data[n-1]=change;
+    		n--;
+    		Heapsort(data,n);
+    	
+    	}
+    }//将顺序存储的数组看做一个完全二叉树，利用最大根堆或最小根堆的性质每次挑选出一个最大最小值移到数组末端，将参与排序的数组长度减1后继续递归直到长度为1
+    堆排序也是一种选择排序
